@@ -11,7 +11,7 @@ namespace MUIManagement.Infrastructure.Database.Entities
         public string Description { get; set; }
         public DateTime ReleaseDate { get; set; }
 
-        public int AutherPersonId { get; set; }
+        public int AuthorPersonId { get; set; }
         public PersonEntity Author { get; set; }
 
         public List<RentalEntity> Rentals { get; set; }
