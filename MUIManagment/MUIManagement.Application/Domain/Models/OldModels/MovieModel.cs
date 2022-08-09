@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,4 +12,4 @@ namespace MUIManagement.Application.Domain.Models
         public DateTime ReleaseDate { get; set; }
         public int AuthorPersonId { get; set; }
     }
-}
+}*/
