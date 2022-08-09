@@ -36,9 +36,10 @@ namespace MUIManagement.Infrastructure.Services
             return null;
         }
 
-        public async Task CreatePerson(PersonModel Person)
+        public async Task CreatePerson(PersonModel person)
         {
-
+            await _context.Persons.AddAsync(new PersonEntity(person.Id, person.FirstName, person.LastName));
+            await _context.SaveChangesAsync();
         }
 
         public async Task EditPerson(long id, PersonModel Person)
