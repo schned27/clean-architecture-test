@@ -7,7 +7,5 @@ using System.Text;
 namespace MUIManagement.Application.UseCases.Queries.GetAllPersons
 {
     public class GetAllPersonsQuery : IRequest<List<PersonModel>>
-    {
-        _mediator.Send()
-    }
+    {}
 }

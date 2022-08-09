@@ -1,21 +1,16 @@
+using System;
+using System.IO;
+using System.Linq;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MUIManagement.Infrastructure.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace MUIManagment.WebApp
+namespace MUIManagement.WebApp
 {
     public class Startup
     {
@@ -25,19 +20,20 @@ namespace MUIManagment.WebApp
         }
 
         public IConfiguration Configuration { get; }
-        private readonly string AssemblyScope = "MUIManagment";
+        private readonly string AssemblyScope = "MUI";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MUIManagment.WebApp", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MUIManagement.WebApp", Version = "v1" });
             });
 
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
+
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
             var modules = assemblies
                           .Where(x => x.ManifestModule.Name.StartsWith(AssemblyScope))
                           .ToArray();
@@ -53,7 +49,7 @@ namespace MUIManagment.WebApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MUIManagment.WebApp v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MUIManagement.WebApp v1"));
             }
 
             app.UseHttpsRedirection();
@@ -66,6 +62,16 @@ namespace MUIManagment.WebApp
             {
                 endpoints.MapControllers();
             });
+        }
+        private static void CreateDatabaseFolderIfNotExists(string connectionString)
+        {
+            string? marker = "DataSource=";
+            // DataSource=Data/MaintenancePlanner.db            if (!connectionString.StartsWith(marker))            {                throw new ApplicationException("Invalid SQLite connection string");            }
+            string? dataSource = connectionString.Replace(marker, "");
+            if (File.Exists(dataSource)) { return; }
+            string? folder = Path.GetDirectoryName(dataSource);
+            if (string.IsNullOrEmpty(folder) || Directory.Exists(folder)) { return; }
+            Directory.CreateDirectory(folder);
         }
     }
 }

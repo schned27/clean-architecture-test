@@ -1,6 +1,6 @@
 using System;
 
-namespace MUIManagment.WebApp
+namespace MUIManagement.WebApp
 {
     public class WeatherForecast
     {

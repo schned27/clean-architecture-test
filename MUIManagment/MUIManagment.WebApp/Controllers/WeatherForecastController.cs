@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MUIManagement.Application.Domain.Models;
+using MUIManagement.Application.UseCases.Queries.GetAllPersons;
 
-namespace MUIManagment.WebApp.Controllers
+namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -17,23 +18,20 @@ namespace MUIManagment.WebApp.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IMediator _mediator;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IMediator _mediator)
         {
             _logger = logger;
+            this._mediator = _mediator;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<List<PersonModel>> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var response = await _mediator.Send(new GetAllPersonsQuery());
+
+            return response;
         }
     }
 }
