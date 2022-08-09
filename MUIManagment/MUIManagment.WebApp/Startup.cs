@@ -9,7 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MUIManagement.Application.Extensions;
+using MUIManagement.Application.Services;
 using MUIManagement.Infrastructure.Database;
+using MUIManagement.Infrastructure.Services;
 
 namespace MUIManagement.WebApp
 {
@@ -32,6 +34,8 @@ namespace MUIManagement.WebApp
             });
 
             CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
+
+            services.AddScoped<IPersonRepository, PersonRepository>();
 
             services.AddApplication();
 
