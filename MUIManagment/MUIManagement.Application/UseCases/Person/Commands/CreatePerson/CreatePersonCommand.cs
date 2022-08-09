@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using MediatR;
-using MUIManagement.Application.Domain.Models.CreatePersonModel;
+using MUIManagement.Application.Domain.Models;
 
 namespace MUIManagement.Application.UseCases.Person.Commands.CreatePerson
 {
     public class CreatePersonCommand : IRequest
     {
-        public CreatePersonModel Person { get; }
+        public PersonModel Person { get; }
 
         public CreatePersonCommand()
         {
-            Person = new CreatePersonModel();
+            Person = new PersonModel();
         }
-        public CreatePersonCommand(CreatePersonModel person)
+        public CreatePersonCommand(PersonModel person)
         {
             Person = person;
         }

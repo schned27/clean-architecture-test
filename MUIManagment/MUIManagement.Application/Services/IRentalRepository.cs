@@ -1,4 +1,4 @@
-﻿/*using MUIManagement.Application.Domain.Models;
+﻿using MUIManagement.Application.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,4 +14,4 @@ namespace MUIManagement.Application.Services
         Task EditRental(long id, RentalModel Rental);
         Task DeleteRentalById(long id);
     }
-}*/
+}
