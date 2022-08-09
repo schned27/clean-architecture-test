@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MUIManagement.Application.Extensions;
 using MUIManagement.Infrastructure.Database;
 
 namespace MUIManagement.WebApp
@@ -20,7 +21,6 @@ namespace MUIManagement.WebApp
         }
 
         public IConfiguration Configuration { get; }
-        private readonly string AssemblyScope = "MUI";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,12 +33,8 @@ namespace MUIManagement.WebApp
 
             CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
 
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-            var modules = assemblies
-                          .Where(x => x.ManifestModule.Name.StartsWith(AssemblyScope))
-                          .ToArray();
-            services.AddAutoMapper(modules);
-            services.AddMediatR(modules);
+            services.AddApplication();
+
             services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
         }
 
