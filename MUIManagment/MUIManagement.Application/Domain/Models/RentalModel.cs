@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -15,4 +15,4 @@ namespace MUIManagement.Application.Domain.Models
         public long PersonId { get; set; }
         public long MovieId { get; set; }
     }
-}*/
+}

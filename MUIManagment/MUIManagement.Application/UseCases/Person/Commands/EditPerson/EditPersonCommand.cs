@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using MediatR;
-using MUIManagement.Application.Domain.Models.EditPersonModel;
+using MUIManagement.Application.Domain.Models;
 
 namespace MUIManagement.Application.UseCases.Person.Commands.EditPerson
 {
     public class EditPersonCommand : IRequest
     {
-        public EditPersonModel Person { get; }
+        public PersonModel Person { get; }
         public long Id { get; }
 
         public EditPersonCommand()
         {
-            Person = new EditPersonModel();
+            Person = new PersonModel();
         }
 
-        public EditPersonCommand(EditPersonModel person, long id)
+        public EditPersonCommand(PersonModel person, long id)
         {
             Person = person;
             Id = id;

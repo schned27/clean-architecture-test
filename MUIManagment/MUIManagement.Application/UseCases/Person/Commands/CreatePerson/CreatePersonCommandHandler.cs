@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.Person.Commands.CreatePerson
 {
     public class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand>
     {
-        private readonly ICreatePersonRepository _repository;
+        private readonly IPersonRepository _repository;
 
-        public CreatePersonCommandHandler(ICreatePersonRepository repository)
+        public CreatePersonCommandHandler(IPersonRepository repository)
         {
             _repository = repository;
         }

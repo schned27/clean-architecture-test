@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -11,4 +11,4 @@ namespace MUIManagement.Application.Domain.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
-}*/
+}
