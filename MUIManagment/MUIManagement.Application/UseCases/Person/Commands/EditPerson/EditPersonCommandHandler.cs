@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.Person.Commands.EditPerson
 {
     public class EditPersonCommandHandler : IRequestHandler<EditPersonCommand>
     {
-        private readonly IPersonRepository _repository;
+        private readonly IEditPersonRepository _repository;
 
-        public EditPersonCommandHandler(IPersonRepository repository)
+        public EditPersonCommandHandler(IEditPersonRepository repository)
         {
             _repository = repository;
         }
