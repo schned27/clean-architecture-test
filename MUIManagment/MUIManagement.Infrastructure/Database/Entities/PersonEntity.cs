@@ -15,5 +15,13 @@ namespace MUIManagement.Infrastructure.Database.Entities
 
         [InverseProperty("Author")]
         public List<MovieEntity> AuthoredMovies { get; set; }
+
+
+        public PersonEntity(long id, string firstName, string lastName)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }
