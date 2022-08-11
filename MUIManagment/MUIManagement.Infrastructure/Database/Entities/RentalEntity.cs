@@ -13,8 +13,8 @@ namespace MUIManagement.Infrastructure.Database.Entities
         public DateTime Borrowed { get; set; }
         public DateTime DueDate { get; set; }
 
-        public long PersonId { get; set; }
-        public PersonEntity PersonEntity { get; set; }
+        public long UserId { get; set; }
+        public UserEntity UserEntity { get; set; }
 
         public long MovieId { get; set; }
         public MovieEntity MovieEntity { get; set; }

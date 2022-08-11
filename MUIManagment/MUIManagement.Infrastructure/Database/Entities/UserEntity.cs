@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MUIManagement.Infrastructure.Database.Entities
 {
-    public class PersonEntity
+    public class UserEntity
     {
         public long Id { get; set; }
         public string FirstName { get; set; }
@@ -13,11 +13,8 @@ namespace MUIManagement.Infrastructure.Database.Entities
 
         public List<RentalEntity> Rentals { get; set; }
 
-        [InverseProperty("Author")]
-        public List<MovieEntity> AuthoredMovies { get; set; }
 
-
-        public PersonEntity(long id, string firstName, string lastName)
+        public UserEntity(long id, string firstName, string lastName)
         {
             Id = id;
             FirstName = firstName;

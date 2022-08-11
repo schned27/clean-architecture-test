@@ -35,7 +35,7 @@ namespace MUIManagement.WebApp
 
             CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
 
-            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddApplication();
 

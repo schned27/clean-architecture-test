@@ -12,7 +12,7 @@ namespace MUIManagement.Application.Domain.Models
         public bool IsPaid { get; set; }
         public DateTime Borrowed { get; set; }
         public DateTime DueDate { get; set; }
-        public long PersonId { get; set; }
+        public long UserId { get; set; }
         public long MovieId { get; set; }
     }
 }
