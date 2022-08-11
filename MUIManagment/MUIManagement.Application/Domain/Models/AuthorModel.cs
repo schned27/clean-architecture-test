@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MUIManagement.Application.Domain.Models
 {
-    public class PersonModel
+    public class AuthorModel
     {
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public PersonModel() { }
+        public AuthorModel() { }
 
-        public PersonModel(long id, string firstName, string lastName)
+        public AuthorModel(long id, string firstName, string lastName)
         {
             Id = id;
             FirstName = firstName;

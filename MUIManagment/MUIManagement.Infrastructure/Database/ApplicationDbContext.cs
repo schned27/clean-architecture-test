@@ -17,7 +17,8 @@ namespace MUIManagement.Infrastructure.Database
         }
 
         public DbSet<MovieEntity> Movies { get; set; }
-        public DbSet<PersonEntity> Persons { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<AuthorEntity> Authors { get; set; }
         public DbSet<RentalEntity> Rentals { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -4,15 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MUIManagement.Application.UseCases.Person.Queries.GetPersonById
+namespace MUIManagement.Application.UseCases.User.Queries.GetUserById
 {
-    public class GetPersonByIdQuery : IRequest<PersonModel> 
+    public class GetUserByIdQuery : IRequest<UserModel> 
     {
         public long Id { get; }
 
-        public GetPersonByIdQuery() { }
+        public GetUserByIdQuery() { }
 
-        public GetPersonByIdQuery(long id)
+        public GetUserByIdQuery(long id)
         {
             Id = id;
         }

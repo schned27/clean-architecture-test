@@ -12,42 +12,42 @@ using MUIManagement.Infrastructure.Database.Entities;
 
 namespace MUIManagement.Infrastructure.Services
 {
-    public class PersonRepository : IPersonRepository
+    public class AuthorRepository : IAuthorRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public PersonRepository(ApplicationDbContext context)
+        public AuthorRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<PersonModel>> GetAllPersons()
+        public async Task<List<AuthorModel>> GetAllAuthors()
         {
-            return await _context.Persons.Select(x => 
-                new PersonModel(
+            return await _context.Authors.Select(x => 
+                new AuthorModel(
                     x.Id, 
                     x.FirstName, 
                     x.LastName))
                 .ToListAsync();
         }
 
-        public async Task<PersonModel> GetPersonById(long id)
+        public async Task<AuthorModel> GetAuthorById(long id)
         {
             return null;
         }
 
-        public async Task CreatePerson(PersonModel person)
+        public async Task CreateAuthor(AuthorModel Author)
         {
-            await _context.Persons.AddAsync(new PersonEntity(person.Id, person.FirstName, person.LastName));
+            await _context.Authors.AddAsync(new AuthorEntity(Author.Id, Author.FirstName, Author.LastName));
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditPerson(long id, PersonModel Person)
+        public async Task EditAuthor(long id, AuthorModel Author)
         {
 
         }
 
-        public async Task DeletePersonById(long id)
+        public async Task DeleteAuthorById(long id)
         {
 
         }

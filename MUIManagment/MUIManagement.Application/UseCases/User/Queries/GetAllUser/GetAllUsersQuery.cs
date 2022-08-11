@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MUIManagement.Application.UseCases.Queries.GetAllPersons
+namespace MUIManagement.Application.UseCases.Queries.GetAllUsers
 {
-    public class GetAllPersonsQuery : IRequest<List<PersonModel>>
+    public class GetAllUsersQuery : IRequest<List<UserModel>>
     {}
 }
