@@ -6,12 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\Configurations\Migrations\20220808131720_initial.cs" />
+    <Compile Remove="Database\Configurations\Migrations\20220808131720_initial.Designer.cs" />
+    <Compile Remove="Database\Configurations\Migrations\20220811091627_AddedAuthor.cs" />
+    <Compile Remove="Database\Configurations\Migrations\20220811091627_AddedAuthor.Designer.cs" />
+    <Compile Remove="Database\Configurations\Migrations\20220811101201_AddedAuthor.cs" />
+    <Compile Remove="Database\Configurations\Migrations\20220811101201_AddedAuthor.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.12" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MUIManagement.Application\MUIManagement.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\Configurations\Migrations\" />
   </ItemGroup>
 
 </Project>

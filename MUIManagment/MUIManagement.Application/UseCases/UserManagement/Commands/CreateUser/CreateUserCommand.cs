@@ -8,13 +8,13 @@ namespace MUIManagement.Application.UseCases.User.Commands.CreateUser
 {
     public class CreateUserCommand : IRequest
     {
-        public UserModel User { get; }
+        public UserManagementModel User { get; }
 
         public CreateUserCommand()
         {
-            User = new UserModel();
+            User = new UserManagementModel();
         }
-        public CreateUserCommand(UserModel user)
+        public CreateUserCommand(UserManagementModel user)
         {
             User = user;
         }
