@@ -6,6 +6,6 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.Queries.GetAllUsers
 {
-    public class GetAllUsersQuery : IRequest<List<UserModel>>
+    public class GetAllUsersQuery : IRequest<List<UserManagementModel>>
     {}
 }

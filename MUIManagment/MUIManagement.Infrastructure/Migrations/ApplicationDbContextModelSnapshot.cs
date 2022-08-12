@@ -3,20 +3,37 @@ using System;
 using MUIManagement.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
+namespace MUIManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220808131720_initial")]
-    partial class initial
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.12");
+
+            modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.AuthorEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authors");
+                });
 
             modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.MovieEntity", b =>
                 {
@@ -25,9 +42,6 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<long>("AuthorId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AuthorPersonId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -46,25 +60,6 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.PersonEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Persons");
                 });
 
             modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.RentalEntity", b =>
@@ -91,24 +86,43 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("PersonEntityId")
+                    b.Property<long>("UserEntityId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("PersonId")
+                    b.Property<long>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieEntityId");
 
-                    b.HasIndex("PersonEntityId");
+                    b.HasIndex("UserEntityId");
 
                     b.ToTable("Rentals");
                 });
 
+            modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.UserEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.MovieEntity", b =>
                 {
-                    b.HasOne("MUIManagement.Infrastructure.Database.Entities.PersonEntity", "Author")
+                    b.HasOne("MUIManagement.Infrastructure.Database.Entities.AuthorEntity", "Author")
                         .WithMany("AuthoredMovies")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -123,9 +137,9 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MUIManagement.Infrastructure.Database.Entities.PersonEntity", "PersonEntity")
+                    b.HasOne("MUIManagement.Infrastructure.Database.Entities.UserEntity", "UserEntity")
                         .WithMany("Rentals")
-                        .HasForeignKey("PersonEntityId")
+                        .HasForeignKey("UserEntityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

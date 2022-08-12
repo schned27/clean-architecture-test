@@ -9,16 +9,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.User.Queries.GetUserById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserModel>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserManagementModel>
     {
-        private readonly IUserRepository _repository;
+        private readonly IUserManagementRepository _repository;
 
-        public GetUserByIdQueryHandler(IUserRepository _repository)
+        public GetUserByIdQueryHandler(IUserManagementRepository _repository)
         {
             this._repository = _repository;
         }
 
-        public async Task<UserModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserManagementModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             return await _repository.GetUserById(request.Id);
         }

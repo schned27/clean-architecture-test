@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.User.Commands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
-        private readonly IUserRepository _repository;
+        private readonly IUserManagementRepository _repository;
 
-        public CreateUserCommandHandler(IUserRepository repository)
+        public CreateUserCommandHandler(IUserManagementRepository repository)
         {
             _repository = repository;
         }

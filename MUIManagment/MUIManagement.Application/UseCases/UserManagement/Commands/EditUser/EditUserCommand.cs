@@ -8,15 +8,15 @@ namespace MUIManagement.Application.UseCases.User.Commands.EditUser
 {
     public class EditUserCommand : IRequest
     {
-        public UserModel User { get; }
+        public UserManagementModel User { get; }
         public long Id { get; }
 
         public EditUserCommand()
         {
-            User = new UserModel();
+            User = new UserManagementModel();
         }
 
-        public EditUserCommand(UserModel user, long id)
+        public EditUserCommand(UserManagementModel user, long id)
         {
             User = user;
             Id = id;

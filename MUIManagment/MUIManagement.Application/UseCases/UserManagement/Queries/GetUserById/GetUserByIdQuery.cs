@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.User.Queries.GetUserById
 {
-    public class GetUserByIdQuery : IRequest<UserModel> 
+    public class GetUserByIdQuery : IRequest<UserManagementModel> 
     {
         public long Id { get; }
 
