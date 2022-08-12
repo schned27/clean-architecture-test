@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
+namespace MUIManagement.Infrastructure.Migrations
 {
-    public partial class initial : Migration
+    public partial class FixDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Persons",
+                name: "Authors",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -18,7 +18,21 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Persons", x => x.Id);
+                    table.PrimaryKey("PK_Authors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,16 +44,15 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     ReleaseDate = table.Column<DateTime>(nullable: false),
-                    AuthorPersonId = table.Column<int>(nullable: false),
                     AuthorId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Movies_Persons_AuthorId",
+                        name: "FK_Movies_Authors_AuthorId",
                         column: x => x.AuthorId,
-                        principalTable: "Persons",
+                        principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -54,8 +67,8 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                     IsPaid = table.Column<bool>(nullable: false),
                     Borrowed = table.Column<DateTime>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
-                    PersonId = table.Column<long>(nullable: false),
-                    PersonEntityId = table.Column<long>(nullable: false),
+                    UserId = table.Column<long>(nullable: false),
+                    UserEntityId = table.Column<long>(nullable: false),
                     MovieId = table.Column<long>(nullable: false),
                     MovieEntityId = table.Column<long>(nullable: false)
                 },
@@ -69,9 +82,9 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rentals_Persons_PersonEntityId",
-                        column: x => x.PersonEntityId,
-                        principalTable: "Persons",
+                        name: "FK_Rentals_Users_UserEntityId",
+                        column: x => x.UserEntityId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -87,9 +100,9 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                 column: "MovieEntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rentals_PersonEntityId",
+                name: "IX_Rentals_UserEntityId",
                 table: "Rentals",
-                column: "PersonEntityId");
+                column: "UserEntityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -101,7 +114,10 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Migrations
                 name: "Movies");
 
             migrationBuilder.DropTable(
-                name: "Persons");
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Authors");
         }
     }
 }
