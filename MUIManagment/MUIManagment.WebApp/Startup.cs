@@ -34,10 +34,10 @@ namespace MUIManagement.WebApp
             });
 
             CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
-            
-            services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 
             services.AddScoped<IRentalManagementRepository, RentalManagementRepository>();
+
+            services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
 
