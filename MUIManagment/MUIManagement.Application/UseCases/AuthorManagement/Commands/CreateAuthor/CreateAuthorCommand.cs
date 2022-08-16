@@ -4,19 +4,19 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovie
+namespace MUIManagement.Application.UseCases.MovieManagement.Commands.CreateAuthor
 {
     public class CreateAuthorCommand : IRequest
     {
-        public MovieModel Movie { get; }
+        public AuthorModel Author { get; }
 
         public CreateAuthorCommand()
         {
-            Movie = new MovieModel();
+            Author = new AuthorModel();
         }
-        public CreateAuthorCommand(MovieModel movie)
+        public CreateAuthorCommand(AuthorModel author)
         {
-            Movie = movie;
+            Author = author;
         }
     }
 }

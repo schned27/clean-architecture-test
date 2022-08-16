@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieById
+namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteAuthorById
 {
     public class DeleteAuthorByIdCommandHandler : IRequestHandler<DeleteAuthorByIdCommand>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IAuthorRepository _repository;
 
-        public DeleteAuthorByIdCommandHandler(IMovieRepository repository)
+        public DeleteAuthorByIdCommandHandler(IAuthorRepository repository)
         {
             _repository = repository;
         }
 
         public async Task<Unit> Handle(DeleteAuthorByIdCommand request, CancellationToken cancellationToken)
         {
-            await _repository.DeleteMovieById(request.Id);
+            await _repository.DeleteAuthorById(request.Id);
 
             return Unit.Value;
         }

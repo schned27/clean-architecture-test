@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById
+namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetAuthorById
 {
-    public class GetAuthorByIdQuery : IRequest<MovieModel>
+    public class GetAuthorByIdQuery : IRequest<AuthorModel>
     {
         public long Id { get; }
 

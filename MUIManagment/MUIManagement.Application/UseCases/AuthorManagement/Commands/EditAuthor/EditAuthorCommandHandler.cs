@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditMovie
+namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditAuthor
 {
     public class EditAuthorCommandHandler : IRequestHandler<EditAuthorCommand>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IAuthorRepository _repository;
 
-        public EditAuthorCommandHandler(IMovieRepository repository)
+        public EditAuthorCommandHandler(IAuthorRepository repository)
         {
             _repository = repository;
         }
 
         public async Task<Unit> Handle(EditAuthorCommand request, CancellationToken cancellationToken)
         {
-            await _repository.EditMovie(request.Id, request.Movie);
+            await _repository.EditAuthor(request.Id, request.Author);
 
             return Unit.Value;
         }

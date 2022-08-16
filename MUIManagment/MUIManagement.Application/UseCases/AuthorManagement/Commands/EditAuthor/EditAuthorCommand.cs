@@ -4,21 +4,21 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditMovie
+namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditAuthor
 {
     public class EditAuthorCommand : IRequest
     {
-        public MovieModel Movie { get; }
+        public AuthorModel Author { get; }
         public long Id { get; }
 
         public EditAuthorCommand()
         {
-            Movie = new MovieModel();
+            Author = new AuthorModel();
         }
 
-        public EditAuthorCommand(MovieModel movie, long id)
+        public EditAuthorCommand(AuthorModel author, long id)
         {
-            Movie = movie;
+            Author = author;
             Id = id;
         }
     }

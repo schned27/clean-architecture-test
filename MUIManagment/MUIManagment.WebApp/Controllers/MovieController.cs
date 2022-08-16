@@ -10,6 +10,7 @@ using MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieByI
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById;
 
+
 namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
@@ -26,7 +27,7 @@ namespace MUIManagement.WebApp.Controllers
         [HttpGet]
         public async Task<List<MovieModel>> GetAllMovies()
         {
-            var response = await _mediator.Send(new GetAllMoviesQuery());
+            var response = await _mediator.Send(new GetAllAuthorsQuery());
 
             return response;
         }
