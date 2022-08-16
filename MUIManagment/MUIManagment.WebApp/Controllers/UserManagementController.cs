@@ -4,11 +4,11 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MUIManagement.Application.Domain.Models;
-using MUIManagement.Application.UseCases.User.Commands.CreateUser;
-using MUIManagement.Application.UseCases.Queries.GetAllUsers;
-using MUIManagement.Application.UseCases.User.Commands.DeleteUser;
-using MUIManagement.Application.UseCases.User.Commands.EditUser;
-using MUIManagement.Application.UseCases.User.Queries.GetUserById;
+using MUIManagement.Application.UseCases.UserManagement.Commands.CreateUser;
+using MUIManagement.Application.UseCases.UserManagement.Commands.DeleteUser;
+using MUIManagement.Application.UseCases.UserManagement.Commands.EditUser;
+using MUIManagement.Application.UseCases.UserManagement.Queries.GetAllUsers;
+using MUIManagement.Application.UseCases.UserManagement.Queries.GetUserById;
 
 namespace MUIManagement.WebApp.Controllers
 {

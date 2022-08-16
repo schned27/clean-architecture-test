@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.User.Commands.CreateUser
+namespace MUIManagement.Application.UseCases.UserManagement.Commands.CreateUser
 {
     public class CreateUserCommand : IRequest
     {

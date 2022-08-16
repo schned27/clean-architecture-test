@@ -4,13 +4,13 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.UserManagement.Commands.DeleteUser
+namespace MUIManagement.Application.UseCases.RentalManagement.Commands.DeleteRental
 {
-    public class DeleteUserByIdCommand : IRequest
+    public class DeleteRentalByIdCommand : IRequest
     {
         public long Id { get; }
 
-        public DeleteUserByIdCommand(long id)
+        public DeleteRentalByIdCommand(long id)
         {
             Id = id;
         }

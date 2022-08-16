@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MUIManagement.Application.Domain.Models
 {
-    public class RentalModel
+    public class RentalManagementModel
     {
         public long Id { get; set; }
         public string? Note { get; set; }

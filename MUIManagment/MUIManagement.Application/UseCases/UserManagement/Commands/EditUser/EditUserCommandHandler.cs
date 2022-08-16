@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.User.Commands.EditUser
+namespace MUIManagement.Application.UseCases.UserManagement.Commands.EditUser
 {
     public class EditUserCommandHandler : IRequestHandler<EditUserCommand>
     {
