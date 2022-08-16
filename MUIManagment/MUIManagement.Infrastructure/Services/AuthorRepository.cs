@@ -1,24 +1,24 @@
 ﻿using MUIManagement.Application.Domain.Models;
 using MUIManagement.Application.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MUIManagement.Infrastructure.Database;
 using MUIManagement.Infrastructure.Database.Entities;
+using AutoMapper;
 
 namespace MUIManagement.Infrastructure.Services
 {
     public class AuthorRepository : IAuthorRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public AuthorRepository(ApplicationDbContext context)
+        public AuthorRepository(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<List<AuthorModel>> GetAllAuthors()
@@ -33,7 +33,7 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task<AuthorModel> GetAuthorById(long id)
         {
-            return null;
+            return _mapper.Map<AuthorModel>(await _context.Authors.FindAsync(id));
         }
 
         public async Task CreateAuthor(AuthorModel Author)
@@ -42,14 +42,20 @@ namespace MUIManagement.Infrastructure.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditAuthor(long id, AuthorModel Author)
+        public async Task EditAuthor(long id, AuthorModel AuthorToEdit)
         {
+            var author = await _context.Authors.FindAsync(id);
 
+            author.FirstName = AuthorToEdit.FirstName;
+            author.LastName = AuthorToEdit.LastName;
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAuthorById(long id)
         {
-
+            _context.Authors.Remove(await _context.Authors.FindAsync(id));
+            await _context.SaveChangesAsync();
         }
     }
 }

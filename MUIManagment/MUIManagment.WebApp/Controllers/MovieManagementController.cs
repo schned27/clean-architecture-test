@@ -10,15 +10,16 @@ using MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieByI
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById;
 
+
 namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class MovieController : ControllerBase
+    public class MovieManagementController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public MovieController(IMediator _mediator)
+        public MovieManagementController(IMediator _mediator)
         {
             this._mediator = _mediator;
         }
