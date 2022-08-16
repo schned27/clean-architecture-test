@@ -34,8 +34,8 @@ namespace MUIManagement.WebApp
             });
 
             CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
-
-            services.AddScoped<IUserRepository, UserRepository>();
+            
+            services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
 

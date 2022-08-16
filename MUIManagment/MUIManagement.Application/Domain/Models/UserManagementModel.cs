@@ -5,15 +5,15 @@ using System.Text;
 
 namespace MUIManagement.Application.Domain.Models
 {
-    public class UserModel
+    public class UserManagementModel
     {
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public UserModel() { }
+        public UserManagementModel() { }
 
-        public UserModel(long id, string firstName, string lastName)
+        public UserManagementModel(long id, string firstName, string lastName)
         {
             Id = id;
             FirstName = firstName;

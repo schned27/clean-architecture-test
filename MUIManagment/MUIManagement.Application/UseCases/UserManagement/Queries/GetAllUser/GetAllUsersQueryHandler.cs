@@ -9,16 +9,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.Queries.GetAllUsers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserModel>>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserManagementModel>>
     {
-        private readonly IUserRepository _repository;
+        private readonly IUserManagementRepository _repository;
 
-        public GetAllUsersQueryHandler(IUserRepository _repository)
+        public GetAllUsersQueryHandler(IUserManagementRepository _repository)
         {
             this._repository = _repository;
         }
 
-        public async Task<List<UserModel>> Handle(GetAllUsersQuery request,
+        public async Task<List<UserManagementModel>> Handle(GetAllUsersQuery request,
            CancellationToken cancellationToken)
         {
             return await _repository.GetAllUsers();
