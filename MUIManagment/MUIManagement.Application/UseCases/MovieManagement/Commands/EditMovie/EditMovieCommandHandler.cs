@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditMovie
 {
     public class EditMovieCommandHandler : IRequestHandler<EditMovieCommand>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IMovieManagementRepository _repository;
 
-        public EditMovieCommandHandler(IMovieRepository repository)
+        public EditMovieCommandHandler(IMovieManagementRepository repository)
         {
             _repository = repository;
         }

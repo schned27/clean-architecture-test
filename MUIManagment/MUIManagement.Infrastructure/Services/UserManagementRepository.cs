@@ -3,6 +3,7 @@ using MUIManagement.Application.Domain.Models;
 using MUIManagement.Application.Services;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MUIManagement.Infrastructure.Database;
@@ -31,6 +32,10 @@ namespace MUIManagement.Infrastructure.Services
         public async Task<UserManagementModel> GetUserById(long id)
         {
             var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with id = {id} does not exist.");
+            }
             return _mapper.Map<UserManagementModel>(user);
         }
 
@@ -43,6 +48,10 @@ namespace MUIManagement.Infrastructure.Services
         public async Task EditUser(long id, UserManagementModel editUser)
         {
             var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with id = {id} does not exist.");
+            }
             user.FirstName = editUser.FirstName;
             user.LastName = editUser.LastName;
             await _context.SaveChangesAsync();
@@ -50,7 +59,12 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task DeleteUserById(long id)
         {
-            _context.Users.Remove(await _context.Users.FindAsync(id));
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with id = {id} does not exist.");
+            }
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
     }

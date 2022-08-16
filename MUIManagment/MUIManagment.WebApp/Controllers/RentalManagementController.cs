@@ -9,6 +9,7 @@ using MUIManagement.Application.UseCases.RentalManagement.Commands.DeleteRental;
 using MUIManagement.Application.UseCases.RentalManagement.Commands.EditRental;
 using MUIManagement.Application.UseCases.RentalManagement.Queries.GetRentalById;
 using MUIManagement.Application.UseCases.RentalManagement.Queries.GetAllRentals;
+using MUIManagement.WebApp.Middleware;
 
 namespace MUIManagement.WebApp.Controllers
 {
@@ -37,16 +38,20 @@ namespace MUIManagement.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task CreateRental(RentalManagementModel Rental)
+        public async Task CreateRental(RentalManagementModel rental)
         {
-            await _mediator.Send(new CreateRentalCommand(Rental));
+            await _mediator.Send(new CreateRentalCommand(rental));
         }
 
         [HttpPut]
         [Route("{id}")]
-        public async Task EditRental(RentalManagementModel Rental, long id)
+        public async Task EditRental(RentalManagementModel rental, long id)
         {
-            await _mediator.Send(new EditRentalCommand(Rental, id));
+            if (rental.Id != id)
+            {
+                throw new AppException("IDs don't match.");
+            }
+            await _mediator.Send(new EditRentalCommand(rental, id));
         }
 
         [HttpDelete]

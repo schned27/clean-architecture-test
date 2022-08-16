@@ -9,6 +9,7 @@ using MUIManagement.Application.UseCases.UserManagement.Commands.DeleteUser;
 using MUIManagement.Application.UseCases.UserManagement.Commands.EditUser;
 using MUIManagement.Application.UseCases.UserManagement.Queries.GetAllUsers;
 using MUIManagement.Application.UseCases.UserManagement.Queries.GetUserById;
+using MUIManagement.WebApp.Middleware;
 
 namespace MUIManagement.WebApp.Controllers
 {
@@ -46,6 +47,10 @@ namespace MUIManagement.WebApp.Controllers
         [Route("{id}")]
         public async Task EditUser(UserManagementModel user, long id)
         {
+            if (user.Id != id)
+            {
+                throw new AppException("IDs don't match.");
+            }
             await _mediator.Send(new EditUserCommand(user, id));
         }
 

@@ -11,9 +11,9 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovie
 {
     public class GetAllMoviesQueryHandler : IRequestHandler<GetAllMoviesQuery, List<MovieModel>>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IMovieManagementRepository _repository;
 
-        public GetAllMoviesQueryHandler(IMovieRepository _repository)
+        public GetAllMoviesQueryHandler(IMovieManagementRepository _repository)
         {
             this._repository = _repository;
         }

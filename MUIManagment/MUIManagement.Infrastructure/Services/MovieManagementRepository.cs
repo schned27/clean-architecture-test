@@ -12,16 +12,17 @@ using System.Threading.Tasks;
 
 namespace MUIManagement.Infrastructure.Services
 {
-    public class MovieRepository : IMovieRepository
+    public class MovieManagementRepository : IMovieManagementRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public MovieRepository(ApplicationDbContext context, IMapper mapper)
+        public MovieManagementRepository(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<List<MovieModel>> GetAllMovies()
         {
             return await _context.Movies.Select(x =>
@@ -38,6 +39,10 @@ namespace MUIManagement.Infrastructure.Services
         public async Task<MovieModel> GetMovieById(long id)
         {
             var movie = await _context.Movies.FindAsync(id);
+            if (movie == null)
+            {
+                throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
+            }
             return _mapper.Map<MovieModel>(movie);
         }
         
@@ -52,6 +57,11 @@ namespace MUIManagement.Infrastructure.Services
         {
             var movie = await _context.Movies.FindAsync(id);
 
+            if (movie == null)
+            {
+                throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
+            }
+
             movie.Title = MovieToEdit.Title;
             movie.Description = MovieToEdit.Description;
             movie.ReleaseDate = MovieToEdit.ReleaseDate;
@@ -62,7 +72,12 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task DeleteMovieById(long id)
         {
-            _context.Movies.Remove(await _context.Movies.FindAsync(id));
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie == null)
+            {
+                throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
+            }
+            _context.Movies.Remove(movie);
             await _context.SaveChangesAsync();
         }
     }
