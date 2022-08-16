@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.User.Commands.DeleteUser
+namespace MUIManagement.Application.UseCases.UserManagement.Commands.DeleteUser
 {
     public class DeleteUserByIdCommandHandler : IRequestHandler<DeleteUserByIdCommand>
     {

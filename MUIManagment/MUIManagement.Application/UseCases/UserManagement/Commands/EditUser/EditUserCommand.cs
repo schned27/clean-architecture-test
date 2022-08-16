@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.User.Commands.EditUser
+namespace MUIManagement.Application.UseCases.UserManagement.Commands.EditUser
 {
     public class EditUserCommand : IRequest
     {

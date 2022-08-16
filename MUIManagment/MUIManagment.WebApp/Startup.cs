@@ -37,6 +37,8 @@ namespace MUIManagement.WebApp
             
             services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 
+            services.AddScoped<IRentalManagementRepository, RentalManagementRepository>();
+
             services.AddApplication();
 
             services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();

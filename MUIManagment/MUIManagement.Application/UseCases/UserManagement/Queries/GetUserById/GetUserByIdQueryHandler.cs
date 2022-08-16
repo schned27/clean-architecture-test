@@ -7,7 +7,7 @@ using MediatR;
 using MUIManagement.Application.Domain.Models;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.User.Queries.GetUserById
+namespace MUIManagement.Application.UseCases.UserManagement.Queries.GetUserById
 {
     public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserManagementModel>
     {

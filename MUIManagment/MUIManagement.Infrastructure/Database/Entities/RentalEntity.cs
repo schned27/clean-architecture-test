@@ -18,5 +18,16 @@ namespace MUIManagement.Infrastructure.Database.Entities
 
         public long MovieId { get; set; }
         public MovieEntity MovieEntity { get; set; }
+
+        public RentalEntity(long id, string? note, bool isPaid, DateTime borrowed, DateTime dueDate, long userId, long movieId)
+        {
+            Id = id;
+            Note = note;
+            IsPaid = isPaid;
+            Borrowed = borrowed;
+            DueDate = dueDate;
+            UserId = userId;
+            MovieId = movieId;
+        }
     }
 }

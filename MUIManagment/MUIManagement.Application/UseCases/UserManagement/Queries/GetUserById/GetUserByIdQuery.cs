@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MUIManagement.Application.UseCases.User.Queries.GetUserById
+namespace MUIManagement.Application.UseCases.UserManagement.Queries.GetUserById
 {
     public class GetUserByIdQuery : IRequest<UserManagementModel> 
     {

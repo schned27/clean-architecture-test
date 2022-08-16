@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.User.Commands.CreateUser
+namespace MUIManagement.Application.UseCases.UserManagement.Commands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
