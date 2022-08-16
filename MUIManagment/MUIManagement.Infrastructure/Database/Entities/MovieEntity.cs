@@ -15,5 +15,14 @@ namespace MUIManagement.Infrastructure.Database.Entities
         public AuthorEntity Author { get; set; }
 
         public List<RentalEntity> Rentals { get; set; }
+
+        public MovieEntity(long id, string title, string description, DateTime releaseDate, long authorId)
+        {
+            Id = id;
+            Title = title;
+            Description = description;
+            ReleaseDate = releaseDate;
+            AuthorId = authorId;
+        }
     }
 }

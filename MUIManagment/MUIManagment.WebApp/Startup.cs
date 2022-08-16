@@ -37,6 +37,8 @@ namespace MUIManagement.WebApp
             
             services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 
+            services.AddScoped<IMovieRepository, MovieRepository>();
+
             services.AddApplication();
 
             services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
