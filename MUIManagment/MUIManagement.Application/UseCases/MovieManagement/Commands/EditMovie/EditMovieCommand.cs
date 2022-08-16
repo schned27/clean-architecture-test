@@ -6,17 +6,17 @@ using MUIManagement.Application.Domain.Models;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditMovie
 {
-    public class EditAuthorCommand : IRequest
+    public class EditMovieCommand : IRequest
     {
         public MovieModel Movie { get; }
         public long Id { get; }
 
-        public EditAuthorCommand()
+        public EditMovieCommand()
         {
             Movie = new MovieModel();
         }
 
-        public EditAuthorCommand(MovieModel movie, long id)
+        public EditMovieCommand(MovieModel movie, long id)
         {
             Movie = movie;
             Id = id;

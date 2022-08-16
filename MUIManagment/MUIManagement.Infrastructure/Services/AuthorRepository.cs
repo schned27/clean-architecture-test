@@ -33,8 +33,7 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task<AuthorModel> GetAuthorById(long id)
         {
-            var author = await _context.Authors.FindAsync(id);
-            return _mapper.Map<AuthorModel>(author);
+            return _mapper.Map<AuthorModel>(await _context.Authors.FindAsync(id));
         }
 
         public async Task CreateAuthor(AuthorModel Author)
@@ -45,7 +44,7 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task EditAuthor(long id, AuthorModel AuthorToEdit)
         {
-            var author = _context.Authors.FindAsync(id);
+            var author = await _context.Authors.FindAsync(id);
 
             author.FirstName = AuthorToEdit.FirstName;
             author.LastName = AuthorToEdit.LastName;
@@ -55,7 +54,8 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task DeleteAuthorById(long id)
         {
-
+            _context.Authors.Remove(await _context.Authors.FindAsync(id));
+            await _context.SaveChangesAsync();
         }
     }
 }

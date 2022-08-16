@@ -6,15 +6,15 @@ using MUIManagement.Application.Domain.Models;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovie
 {
-    public class CreateAuthorCommand : IRequest
+    public class CreateMovieCommand : IRequest
     {
         public MovieModel Movie { get; }
 
-        public CreateAuthorCommand()
+        public CreateMovieCommand()
         {
             Movie = new MovieModel();
         }
-        public CreateAuthorCommand(MovieModel movie)
+        public CreateMovieCommand(MovieModel movie)
         {
             Movie = movie;
         }

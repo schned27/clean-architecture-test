@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteAuthorById
+namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.DeleteAuthorById
 {
     public class DeleteAuthorByIdCommandHandler : IRequestHandler<DeleteAuthorByIdCommand>
     {

@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditAuthor
+namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.EditAuthor
 {
     public class EditAuthorCommand : IRequest
     {

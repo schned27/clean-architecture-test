@@ -8,16 +8,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovie
 {
-    public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand>
+    public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand>
     {
         private readonly IMovieRepository _repository;
 
-        public CreateAuthorCommandHandler(IMovieRepository repository)
+        public CreateMovieCommandHandler(IMovieRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<Unit> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
         {
             await _repository.CreateMovie(request.Movie);
 

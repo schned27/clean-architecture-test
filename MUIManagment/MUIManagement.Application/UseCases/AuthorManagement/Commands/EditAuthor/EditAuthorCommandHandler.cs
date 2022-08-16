@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditAuthor
+namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.EditAuthor
 {
     public class EditAuthorCommandHandler : IRequestHandler<EditAuthorCommand>
     {

@@ -6,13 +6,13 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById
 {
-    public class GetAuthorByIdQuery : IRequest<MovieModel>
+    public class GetMovieByIdQuery : IRequest<MovieModel>
     {
         public long Id { get; }
 
-        public GetAuthorByIdQuery() { }
+        public GetMovieByIdQuery() { }
 
-        public GetAuthorByIdQuery(long id)
+        public GetMovieByIdQuery(long id)
         {
             Id = id;
         }

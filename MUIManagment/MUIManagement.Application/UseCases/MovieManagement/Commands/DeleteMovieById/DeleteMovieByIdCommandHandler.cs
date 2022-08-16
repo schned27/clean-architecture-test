@@ -8,16 +8,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieById
 {
-    public class DeleteAuthorByIdCommandHandler : IRequestHandler<DeleteAuthorByIdCommand>
+    public class DeleteMovieByIdCommandHandler : IRequestHandler<DeleteMovieByIdCommand>
     {
         private readonly IMovieRepository _repository;
 
-        public DeleteAuthorByIdCommandHandler(IMovieRepository repository)
+        public DeleteMovieByIdCommandHandler(IMovieRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<Unit> Handle(DeleteAuthorByIdCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteMovieByIdCommand request, CancellationToken cancellationToken)
         {
             await _repository.DeleteMovieById(request.Id);
 

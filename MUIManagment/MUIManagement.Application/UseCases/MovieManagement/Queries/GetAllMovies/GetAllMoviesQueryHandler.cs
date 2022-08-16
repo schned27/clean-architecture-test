@@ -9,16 +9,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies
 {
-    public class GetAllAuthorsQueryHandler : IRequestHandler<GetAllAuthorsQuery, List<MovieModel>>
+    public class GetAllMoviesQueryHandler : IRequestHandler<GetAllMoviesQuery, List<MovieModel>>
     {
         private readonly IMovieRepository _repository;
 
-        public GetAllAuthorsQueryHandler(IMovieRepository _repository)
+        public GetAllMoviesQueryHandler(IMovieRepository _repository)
         {
             this._repository = _repository;
         }
 
-        public async Task<List<MovieModel>> Handle(GetAllAuthorsQuery request,
+        public async Task<List<MovieModel>> Handle(GetAllMoviesQuery request,
            CancellationToken cancellationToken)
         {
             return await _repository.GetAllMovies();

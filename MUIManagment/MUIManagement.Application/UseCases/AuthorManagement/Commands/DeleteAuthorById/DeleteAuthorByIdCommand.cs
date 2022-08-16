@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using MUIManagement.Application.Domain.Models;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteAuthorById
+namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.DeleteAuthorById
 {
     public class DeleteAuthorByIdCommand : IRequest
     {

@@ -15,11 +15,11 @@ namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class MovieController : ControllerBase
+    public class MovieManagementController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public MovieController(IMediator _mediator)
+        public MovieManagementController(IMediator _mediator)
         {
             this._mediator = _mediator;
         }
@@ -27,7 +27,7 @@ namespace MUIManagement.WebApp.Controllers
         [HttpGet]
         public async Task<List<MovieModel>> GetAllMovies()
         {
-            var response = await _mediator.Send(new GetAllAuthorsQuery());
+            var response = await _mediator.Send(new GetAllMoviesQuery());
 
             return response;
         }

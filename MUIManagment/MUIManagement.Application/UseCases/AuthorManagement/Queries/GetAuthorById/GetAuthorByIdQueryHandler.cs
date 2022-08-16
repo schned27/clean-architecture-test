@@ -6,7 +6,7 @@ using MediatR;
 using MUIManagement.Application.Domain.Models;
 using MUIManagement.Application.Services;
 
-namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetAuthorById
+namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAuthorById
 {
     public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, AuthorModel>
     {

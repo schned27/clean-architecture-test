@@ -6,11 +6,11 @@ using MUIManagement.Application.Domain.Models;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieById
 {
-    public class DeleteAuthorByIdCommand : IRequest
+    public class DeleteMovieByIdCommand : IRequest
     {
         public long Id { get; }
 
-        public DeleteAuthorByIdCommand(long id)
+        public DeleteMovieByIdCommand(long id)
         {
 
             Id = id;

@@ -37,8 +37,7 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task<MovieModel> GetMovieById(long id)
         {
-            var movie = await _context.Movies.FindAsync(id);
-            return _mapper.Map<MovieModel>(movie);
+            return _mapper.Map<MovieModel>(await _context.Movies.FindAsync(id));
         }
         
 
