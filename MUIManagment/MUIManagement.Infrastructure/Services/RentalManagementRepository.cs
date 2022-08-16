@@ -32,31 +32,47 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task<RentalManagementModel> GetRentalById(long id)
         {
-            var Rental = await _context.Rentals.FindAsync(id);
-            return _mapper.Map<RentalManagementModel>(Rental);
+            var rental = await _context.Rentals.FindAsync(id);
+            if (rental == null)
+            {
+                throw new KeyNotFoundException($"Rental with id = {id} does not exist.");
+            }
+            return _mapper.Map<RentalManagementModel>(rental);
         }
 
-        public async Task CreateRental(RentalManagementModel Rental)
+        public async Task CreateRental(RentalManagementModel rental)
         {
-            await _context.Rentals.AddAsync(new RentalEntity(Rental.Id, Rental.Note, Rental.IsPaid, Rental.Borrowed, Rental.DueDate, Rental.UserId, Rental.MovieId));
+            await _context.Rentals.AddAsync(new RentalEntity(rental.Id, rental.Note, rental.IsPaid, rental.Borrowed, rental.DueDate, rental.UserId, rental.MovieId));
             await _context.SaveChangesAsync();
         }
 
         public async Task EditRental(long id, RentalManagementModel editRental)
         {
-            var Rental = await _context.Rentals.FindAsync(id);
-            Rental.Note = editRental.Note;
-            Rental.IsPaid = editRental.IsPaid;
-            Rental.Borrowed = editRental.Borrowed;
-            Rental.DueDate = editRental.DueDate;
-            Rental.UserId = editRental.UserId;
-            Rental.MovieId = editRental.MovieId;
+            var rental = await _context.Rentals.FindAsync(id);
+
+            if (rental == null)
+            {
+                throw new KeyNotFoundException($"Rental with id = {id} does not exist.");
+            }
+
+            rental.Note = editRental.Note;
+            rental.IsPaid = editRental.IsPaid;
+            rental.Borrowed = editRental.Borrowed;
+            rental.DueDate = editRental.DueDate;
+            rental.UserId = editRental.UserId;
+            rental.MovieId = editRental.MovieId;
+
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteRentalById(long id)
         {
-            _context.Rentals.Remove(await _context.Rentals.FindAsync(id));
+            var rental = await _context.Rentals.FindAsync(id);
+            if (rental == null)
+            {
+                throw new KeyNotFoundException($"Rental with id = {id} does not exist.");
+            }
+            _context.Rentals.Remove(rental);
             await _context.SaveChangesAsync();
         }
     }

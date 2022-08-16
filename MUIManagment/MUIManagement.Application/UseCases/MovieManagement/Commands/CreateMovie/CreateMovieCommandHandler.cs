@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovi
 {
     public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IMovieManagementRepository _repository;
 
-        public CreateMovieCommandHandler(IMovieRepository repository)
+        public CreateMovieCommandHandler(IMovieManagementRepository repository)
         {
             _repository = repository;
         }

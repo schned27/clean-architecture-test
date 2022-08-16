@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MUIManagement.Application.Services
 {
-    public interface IMovieRepository
+    public interface IMovieManagementRepository
     {
         Task<List<MovieModel>> GetAllMovies();
         Task<MovieModel> GetMovieById(long id);
