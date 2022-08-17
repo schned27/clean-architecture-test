@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAuthorB
 {
     public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, AuthorModel>
     {
-        private readonly IAuthorRepository _repository;
+        private readonly IAuthorManagementRepository _repository;
 
-        public GetAuthorByIdQueryHandler(IAuthorRepository _repository)
+        public GetAuthorByIdQueryHandler(IAuthorManagementRepository _repository)
         {
             this._repository = _repository;
         }

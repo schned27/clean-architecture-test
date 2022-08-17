@@ -10,12 +10,12 @@ using AutoMapper;
 
 namespace MUIManagement.Infrastructure.Services
 {
-    public class AuthorRepository : IAuthorRepository
+    public class AuthorManagementRepository : IAuthorManagementRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public AuthorRepository(ApplicationDbContext context, IMapper mapper)
+        public AuthorManagementRepository(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -33,7 +33,12 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task<AuthorModel> GetAuthorById(long id)
         {
-            return _mapper.Map<AuthorModel>(await _context.Authors.FindAsync(id));
+            var author = await _context.Authors.FindAsync(id);
+            if (author == null)
+            {
+                throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
+            }
+            return _mapper.Map<AuthorModel>(author);
         }
 
         public async Task CreateAuthor(AuthorModel Author)
@@ -45,6 +50,10 @@ namespace MUIManagement.Infrastructure.Services
         public async Task EditAuthor(long id, AuthorModel AuthorToEdit)
         {
             var author = await _context.Authors.FindAsync(id);
+            if (author == null)
+            {
+                throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
+            }
 
             author.FirstName = AuthorToEdit.FirstName;
             author.LastName = AuthorToEdit.LastName;
@@ -54,7 +63,12 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task DeleteAuthorById(long id)
         {
-            _context.Authors.Remove(await _context.Authors.FindAsync(id));
+            var author = await _context.Authors.FindAsync(id);
+            if (author == null)
+            {
+                throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
+            }
+            _context.Authors.Remove(author);
             await _context.SaveChangesAsync();
         }
     }
