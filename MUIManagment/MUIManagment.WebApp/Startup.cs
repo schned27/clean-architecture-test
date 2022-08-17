@@ -11,7 +11,6 @@ using Microsoft.OpenApi.Models;
 using MUIManagement.Application.Extensions;
 using MUIManagement.Application.Services;
 using MUIManagement.Infrastructure.Database;
-using MUIManagement.Infrastructure.Middleware;
 using MUIManagement.Infrastructure.Services;
 
 namespace MUIManagement.WebApp
@@ -42,7 +41,7 @@ namespace MUIManagement.WebApp
 
             services.AddScoped<IMovieManagementRepository, MovieManagementRepository>();
 
-            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IAuthorManagementRepository, AuthorManagementRepository>();
 
             services.AddApplication();
 
@@ -68,10 +67,7 @@ namespace MUIManagement.WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            }); 
-            
-            // global error handler
-            app.UseMiddleware<ErrorHandlerMiddleware>();
+            });
         }
         private static void CreateDatabaseFolderIfNotExists(string connectionString)
         {

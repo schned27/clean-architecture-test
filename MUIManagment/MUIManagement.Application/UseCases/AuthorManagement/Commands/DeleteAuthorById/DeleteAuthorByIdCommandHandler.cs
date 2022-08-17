@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.DeleteAut
 {
     public class DeleteAuthorByIdCommandHandler : IRequestHandler<DeleteAuthorByIdCommand>
     {
-        private readonly IAuthorRepository _repository;
+        private readonly IAuthorManagementRepository _repository;
 
-        public DeleteAuthorByIdCommandHandler(IAuthorRepository repository)
+        public DeleteAuthorByIdCommandHandler(IAuthorManagementRepository repository)
         {
             _repository = repository;
         }

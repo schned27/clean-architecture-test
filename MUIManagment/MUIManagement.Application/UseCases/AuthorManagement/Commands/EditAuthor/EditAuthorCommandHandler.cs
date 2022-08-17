@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.EditAutho
 {
     public class EditAuthorCommandHandler : IRequestHandler<EditAuthorCommand>
     {
-        private readonly IAuthorRepository _repository;
+        private readonly IAuthorManagementRepository _repository;
 
-        public EditAuthorCommandHandler(IAuthorRepository repository)
+        public EditAuthorCommandHandler(IAuthorManagementRepository repository)
         {
             _repository = repository;
         }

@@ -11,9 +11,9 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAllAuth
 {
     public class GetAllAuthorsQueryHandler : IRequestHandler<GetAllAuthorsQuery, List<AuthorModel>>
     {
-        private readonly IAuthorRepository _repository;
+        private readonly IAuthorManagementRepository _repository;
 
-        public GetAllAuthorsQueryHandler(IAuthorRepository _repository)
+        public GetAllAuthorsQueryHandler(IAuthorManagementRepository _repository)
         {
             this._repository = _repository;
         }

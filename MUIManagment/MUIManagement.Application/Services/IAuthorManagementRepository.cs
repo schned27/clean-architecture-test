@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MUIManagement.Application.Services
 {
-    public interface IAuthorRepository
+    public interface IAuthorManagementRepository
     {
         Task<List<AuthorModel>> GetAllAuthors();
         Task<AuthorModel> GetAuthorById(long id);

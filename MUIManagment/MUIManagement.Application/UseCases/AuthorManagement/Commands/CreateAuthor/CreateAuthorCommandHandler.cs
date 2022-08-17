@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.CreateAut
 {
     public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand>
     {
-        private readonly IAuthorRepository _repository;
+        private readonly IAuthorManagementRepository _repository;
 
-        public CreateAuthorCommandHandler(IAuthorRepository repository)
+        public CreateAuthorCommandHandler(IAuthorManagementRepository repository)
         {
             _repository = repository;
         }
