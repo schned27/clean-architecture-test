@@ -9,6 +9,7 @@ using MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovie;
 using MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieById;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById;
+using MUIManagement.WebApp.Middleware;
 
 
 namespace MUIManagement.WebApp.Controllers
@@ -51,6 +52,10 @@ namespace MUIManagement.WebApp.Controllers
         [Route("{id}")]
         public async Task EditMovie(MovieModel movie, long id)
         {
+            if (movie.Id != id)
+            {
+                throw new AppException("IDs don't match.");
+            }
             await _mediator.Send(new EditMovieCommand(movie, id));
         }
 

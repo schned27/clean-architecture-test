@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovi
 {
     public class DeleteMovieByIdCommandHandler : IRequestHandler<DeleteMovieByIdCommand>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IMovieManagementRepository _repository;
 
-        public DeleteMovieByIdCommandHandler(IMovieRepository repository)
+        public DeleteMovieByIdCommandHandler(IMovieManagementRepository repository)
         {
             _repository = repository;
         }
