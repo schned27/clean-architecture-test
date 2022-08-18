@@ -6,18 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20220818130759_AddUsername.cs" />
-    <Compile Remove="Migrations\20220818130759_AddUsername.Designer.cs" />
-    <Compile Remove="Migrations\20220818130845_AddUsername.cs" />
-    <Compile Remove="Migrations\20220818130845_AddUsername.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Migrations\20220818140614_Init.cs" />
-    <Compile Remove="Migrations\20220818140614_Init.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.12" />

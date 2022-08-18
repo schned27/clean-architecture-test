@@ -14,7 +14,7 @@ namespace MUIManagement.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.12");
+                .HasAnnotation("ProductVersion", "3.1.28");
 
             modelBuilder.Entity("MUIManagement.Infrastructure.Database.Entities.AuthorEntity", b =>
                 {
@@ -112,6 +112,10 @@ namespace MUIManagement.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
