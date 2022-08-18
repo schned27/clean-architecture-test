@@ -41,7 +41,7 @@ namespace MUIManagement.Infrastructure.Services
 
         public async Task CreateUser(UserManagementModel user)
         {
-            await _context.Users.AddAsync(new UserEntity(user.Id, user.FirstName, user.LastName));
+            await _context.Users.AddAsync(new UserEntity(user.Id, user.FirstName, user.LastName, user.Username));
             await _context.SaveChangesAsync();
         }
 

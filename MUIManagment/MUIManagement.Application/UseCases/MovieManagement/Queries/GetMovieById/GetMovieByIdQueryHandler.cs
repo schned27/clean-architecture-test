@@ -10,9 +10,9 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieByI
 {
     public class GetMovieByIdQueryHandler : IRequestHandler<GetMovieByIdQuery, MovieManagementModel>
     {
-        private readonly IMovieRepository _repository;
+        private readonly IMovieManagementRepository _repository;
 
-        public GetMovieByIdQueryHandler(IMovieRepository _repository)
+        public GetMovieByIdQueryHandler(IMovieManagementRepository _repository)
         {
             this._repository = _repository;
         }
