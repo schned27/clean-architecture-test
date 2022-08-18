@@ -4,10 +4,11 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MUIManagement.Infrastructure.Database.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MUIManagement.Infrastructure.Database
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         private readonly IConfiguration configuration;
 
