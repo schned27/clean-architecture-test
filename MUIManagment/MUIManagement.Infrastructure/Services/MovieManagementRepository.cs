@@ -23,10 +23,10 @@ namespace MUIManagement.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<List<MovieModel>> GetAllMovies()
+        public async Task<List<MovieManagementModel>> GetAllMovies()
         {
             return await _context.Movies.Select(x =>
-                new MovieModel(
+                new MovieManagementModel(
                     x.Id,
                     x.Title,
                     x.Description,
@@ -36,24 +36,24 @@ namespace MUIManagement.Infrastructure.Services
                 .ToListAsync();
         }
 
-        public async Task<MovieModel> GetMovieById(long id)
+        public async Task<MovieManagementModel> GetMovieById(long id)
         {
             var movie = await _context.Movies.FindAsync(id);
             if (movie == null)
             {
                 throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
             }
-            return _mapper.Map<MovieModel>(movie);
+            return _mapper.Map<MovieManagementModel>(movie);
         }
         
 
-        public async Task CreateMovie(MovieModel movie)
+        public async Task CreateMovie(MovieManagementModel movie)
         {
             await _context.Movies.AddAsync(new MovieEntity(movie.Id, movie.Title, movie.Description, movie.ReleaseDate, movie.AuthorId));
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditMovie(long id, MovieModel MovieToEdit)
+        public async Task EditMovie(long id, MovieManagementModel MovieToEdit)
         {
             var movie = await _context.Movies.FindAsync(id);
 

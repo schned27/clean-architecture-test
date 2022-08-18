@@ -8,13 +8,13 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.CreateAut
 {
     public class CreateAuthorCommand : IRequest
     {
-        public AuthorModel Author { get; }
+        public AuthorManagementModel Author { get; }
 
         public CreateAuthorCommand()
         {
-            Author = new AuthorModel();
+            Author = new AuthorManagementModel();
         }
-        public CreateAuthorCommand(AuthorModel author)
+        public CreateAuthorCommand(AuthorManagementModel author)
         {
             Author = author;
         }

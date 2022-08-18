@@ -11,7 +11,7 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Mapper
     {
         public MovieManagementModelMapper()
         {
-            CreateMap<MovieModel, MovieEntity>().ReverseMap();
+            CreateMap<MovieManagementModel, MovieEntity>().ReverseMap();
         }
     }
 }

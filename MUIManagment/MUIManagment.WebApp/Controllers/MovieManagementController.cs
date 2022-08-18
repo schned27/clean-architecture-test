@@ -9,7 +9,6 @@ using MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovie;
 using MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieById;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById;
-using MUIManagement.WebApp.Middleware;
 
 
 namespace MUIManagement.WebApp.Controllers
@@ -26,7 +25,7 @@ namespace MUIManagement.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<List<MovieModel>> GetAllMovies()
+        public async Task<List<MovieManagementModel>> GetAllMovies()
         {
             var response = await _mediator.Send(new GetAllMoviesQuery());
 
@@ -35,7 +34,7 @@ namespace MUIManagement.WebApp.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<MovieModel> GetMovieById(long id)
+        public async Task<MovieManagementModel> GetMovieById(long id)
         {
             var response = await _mediator.Send(new GetMovieByIdQuery(id));
 
@@ -43,19 +42,15 @@ namespace MUIManagement.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task CreateMovie(MovieModel Movie)
+        public async Task CreateMovie(MovieManagementModel Movie)
         {
             await _mediator.Send(new CreateMovieCommand(Movie));
         }
 
         [HttpPut]
         [Route("{id}")]
-        public async Task EditMovie(MovieModel movie, long id)
+        public async Task EditMovie(MovieManagementModel movie, long id)
         {
-            if (movie.Id != id)
-            {
-                throw new AppException("IDs don't match.");
-            }
             await _mediator.Send(new EditMovieCommand(movie, id));
         }
 

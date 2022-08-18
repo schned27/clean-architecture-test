@@ -9,16 +9,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAllAuthors
 {
-    public class GetAllAuthorsQueryHandler : IRequestHandler<GetAllAuthorsQuery, List<AuthorModel>>
+    public class GetAllAuthorsQueryHandler : IRequestHandler<GetAllAuthorsQuery, List<AuthorManagementModel>>
     {
-        private readonly IAuthorManagementRepository _repository;
+        private readonly IAuthorRepository _repository;
 
-        public GetAllAuthorsQueryHandler(IAuthorManagementRepository _repository)
+        public GetAllAuthorsQueryHandler(IAuthorRepository _repository)
         {
             this._repository = _repository;
         }
 
-        public async Task<List<AuthorModel>> Handle(GetAllAuthorsQuery request,
+        public async Task<List<AuthorManagementModel>> Handle(GetAllAuthorsQuery request,
            CancellationToken cancellationToken)
         {
             return await _repository.GetAllAuthors();

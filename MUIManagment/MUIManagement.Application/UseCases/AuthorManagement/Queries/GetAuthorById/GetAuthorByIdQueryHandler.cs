@@ -8,16 +8,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAuthorById
 {
-    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, AuthorModel>
+    public class GetAuthorByIdQueryHandler : IRequestHandler<GetAuthorByIdQuery, AuthorManagementModel>
     {
-        private readonly IAuthorManagementRepository _repository;
+        private readonly IAuthorRepository _repository;
 
-        public GetAuthorByIdQueryHandler(IAuthorManagementRepository _repository)
+        public GetAuthorByIdQueryHandler(IAuthorRepository _repository)
         {
             this._repository = _repository;
         }
 
-        public async Task<AuthorModel> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
+        public async Task<AuthorManagementModel> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
         {
             return await _repository.GetAuthorById(request.Id);
         }

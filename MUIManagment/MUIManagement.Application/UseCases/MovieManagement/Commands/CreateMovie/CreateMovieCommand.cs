@@ -8,13 +8,13 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovi
 {
     public class CreateMovieCommand : IRequest
     {
-        public MovieModel Movie { get; }
+        public MovieManagementModel Movie { get; }
 
         public CreateMovieCommand()
         {
-            Movie = new MovieModel();
+            Movie = new MovieManagementModel();
         }
-        public CreateMovieCommand(MovieModel movie)
+        public CreateMovieCommand(MovieManagementModel movie)
         {
             Movie = movie;
         }

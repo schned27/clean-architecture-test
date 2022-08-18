@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById
 {
-    public class GetMovieByIdQuery : IRequest<MovieModel>
+    public class GetMovieByIdQuery : IRequest<MovieManagementModel>
     {
         public long Id { get; }
 
