@@ -8,15 +8,15 @@ namespace MUIManagement.Application.UseCases.AuthorManagement.Commands.EditAutho
 {
     public class EditAuthorCommand : IRequest
     {
-        public AuthorModel Author { get; }
+        public AuthorManagementModel Author { get; }
         public long Id { get; }
 
         public EditAuthorCommand()
         {
-            Author = new AuthorModel();
+            Author = new AuthorManagementModel();
         }
 
-        public EditAuthorCommand(AuthorModel author, long id)
+        public EditAuthorCommand(AuthorManagementModel author, long id)
         {
             Author = author;
             Id = id;

@@ -4,15 +4,15 @@ using System.Text;
 
 namespace MUIManagement.Application.Domain.Models
 {
-    public class AuthorModel
+    public class AuthorManagementModel
     {
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public AuthorModel() { }
+        public AuthorManagementModel() { }
 
-        public AuthorModel(long id, string firstName, string lastName)
+        public AuthorManagementModel(long id, string firstName, string lastName)
         {
             Id = id;
             FirstName = firstName;

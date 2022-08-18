@@ -8,16 +8,16 @@ using MUIManagement.Application.Services;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById
 {
-    public class GetMovieByIdQueryHandler : IRequestHandler<GetMovieByIdQuery, MovieModel>
+    public class GetMovieByIdQueryHandler : IRequestHandler<GetMovieByIdQuery, MovieManagementModel>
     {
-        private readonly IMovieManagementRepository _repository;
+        private readonly IMovieRepository _repository;
 
-        public GetMovieByIdQueryHandler(IMovieManagementRepository _repository)
+        public GetMovieByIdQueryHandler(IMovieRepository _repository)
         {
             this._repository = _repository;
         }
 
-        public async Task<MovieModel> Handle(GetMovieByIdQuery request, CancellationToken cancellationToken)
+        public async Task<MovieManagementModel> Handle(GetMovieByIdQuery request, CancellationToken cancellationToken)
         {
             return await _repository.GetMovieById(request.Id);
         }

@@ -8,15 +8,15 @@ namespace MUIManagement.Application.UseCases.MovieManagement.Commands.EditMovie
 {
     public class EditMovieCommand : IRequest
     {
-        public MovieModel Movie { get; }
+        public MovieManagementModel Movie { get; }
         public long Id { get; }
 
         public EditMovieCommand()
         {
-            Movie = new MovieModel();
+            Movie = new MovieManagementModel();
         }
 
-        public EditMovieCommand(MovieModel movie, long id)
+        public EditMovieCommand(MovieManagementModel movie, long id)
         {
             Movie = movie;
             Id = id;

@@ -11,7 +11,7 @@ namespace MUIManagement.Infrastructure.Database.Configurations.Mapper
     {
         public AuthorManagementModelMapper()
         {
-            CreateMap<AuthorModel, AuthorEntity>().ReverseMap();
+            CreateMap<AuthorManagementModel, AuthorEntity>().ReverseMap();
         }
     }
 }

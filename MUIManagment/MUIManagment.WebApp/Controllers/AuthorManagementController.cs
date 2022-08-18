@@ -23,27 +23,27 @@ namespace MUIManagement.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<List<AuthorModel>> GetAllAuthors()
+        public async Task<List<AuthorManagementModel>> GetAllAuthors()
         {
             return await _mediator.Send(new GetAllAuthorsQuery());
         }
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<AuthorModel> GetAuthorById(long id)
+        public async Task<AuthorManagementModel> GetAuthorById(long id)
         {
             return await _mediator.Send(new GetAuthorByIdQuery(id));
         }
 
         [HttpPost]
-        public async Task CreateAuthor(AuthorModel author)
+        public async Task CreateAuthor(AuthorManagementModel author)
         {
             await _mediator.Send(new CreateAuthorCommand(author));
         }
 
         [HttpPut]
         [Route("{id}")]
-        public async Task EditAuthor(long id, AuthorModel author)
+        public async Task EditAuthor(long id, AuthorManagementModel author)
         {
             await _mediator.Send(new EditAuthorCommand(author, id));
         }

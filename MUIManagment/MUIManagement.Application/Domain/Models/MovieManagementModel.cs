@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MUIManagement.Application.Domain.Models
 {
-    public class MovieModel
+    public class MovieManagementModel
     {
         public long Id { get; set; }
         public string Title { get; set; }
@@ -12,9 +12,9 @@ namespace MUIManagement.Application.Domain.Models
         public DateTime ReleaseDate { get; set; }
         public long AuthorId { get; set; }
 
-        public MovieModel() { }
+        public MovieManagementModel() { }
 
-        public MovieModel(long id, string title, string description, DateTime releaseDate, long authorId)
+        public MovieManagementModel(long id, string title, string description, DateTime releaseDate, long authorId)
         {
             Id = id;
             Title = title;

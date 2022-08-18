@@ -21,33 +21,33 @@ namespace MUIManagement.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<List<AuthorModel>> GetAllAuthors()
+        public async Task<List<AuthorManagementModel>> GetAllAuthors()
         {
             return await _context.Authors.Select(x => 
-                new AuthorModel(
+                new AuthorManagementModel(
                     x.Id, 
                     x.FirstName, 
                     x.LastName))
                 .ToListAsync();
         }
 
-        public async Task<AuthorModel> GetAuthorById(long id)
+        public async Task<AuthorManagementModel> GetAuthorById(long id)
         {
             var author = await _context.Authors.FindAsync(id);
             if (author == null)
             {
                 throw new KeyNotFoundException($"Movie with id = {id} does not exist.");
             }
-            return _mapper.Map<AuthorModel>(author);
+            return _mapper.Map<AuthorManagementModel>(author);
         }
 
-        public async Task CreateAuthor(AuthorModel Author)
+        public async Task CreateAuthor(AuthorManagementModel Author)
         {
             await _context.Authors.AddAsync(new AuthorEntity(Author.Id, Author.FirstName, Author.LastName));
             await _context.SaveChangesAsync();
         }
 
-        public async Task EditAuthor(long id, AuthorModel AuthorToEdit)
+        public async Task EditAuthor(long id, AuthorManagementModel AuthorToEdit)
         {
             var author = await _context.Authors.FindAsync(id);
             if (author == null)

@@ -8,10 +8,10 @@ namespace MUIManagement.Application.Services
 {
     public interface IAuthorManagementRepository
     {
-        Task<List<AuthorModel>> GetAllAuthors();
-        Task<AuthorModel> GetAuthorById(long id);
-        Task CreateAuthor(AuthorModel Author);
-        Task EditAuthor(long id, AuthorModel Author);
+        Task<List<AuthorManagementModel>> GetAllAuthors();
+        Task<AuthorManagementModel> GetAuthorById(long id);
+        Task CreateAuthor(AuthorManagementModel Author);
+        Task EditAuthor(long id, AuthorManagementModel Author);
         Task DeleteAuthorById(long id);
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAuthorById
 {
-    public class GetAuthorByIdQuery : IRequest<AuthorModel>
+    public class GetAuthorByIdQuery : IRequest<AuthorManagementModel>
     {
         public long Id { get; }
 

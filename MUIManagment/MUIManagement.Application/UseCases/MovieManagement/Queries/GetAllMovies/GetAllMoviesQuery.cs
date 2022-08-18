@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies
 {
-    public class GetAllMoviesQuery : IRequest<List<MovieModel>>
+    public class GetAllMoviesQuery : IRequest<List<MovieManagementModel>>
     { }
 }
 

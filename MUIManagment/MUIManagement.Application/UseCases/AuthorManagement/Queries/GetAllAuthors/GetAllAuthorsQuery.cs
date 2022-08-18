@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MUIManagement.Application.UseCases.AuthorManagement.Queries.GetAllAuthors
 {
-    public class GetAllAuthorsQuery : IRequest<List<AuthorModel>>
+    public class GetAllAuthorsQuery : IRequest<List<AuthorManagementModel>>
     { }
 }
 
