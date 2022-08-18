@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.IO;
 using System.Linq;
 using MediatR;
@@ -11,7 +12,11 @@ using Microsoft.OpenApi.Models;
 using MUIManagement.Application.Extensions;
 using MUIManagement.Application.Services;
 using MUIManagement.Infrastructure.Database;
+using MUIManagement.WebApp.Configuration.JwtConfig;
 using MUIManagement.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
 
 namespace MUIManagement.WebApp
 {
@@ -35,6 +40,31 @@ namespace MUIManagement.WebApp
 
             CreateDatabaseFolderIfNotExists(Configuration.GetConnectionString("DefaultConnection"));
 
+            services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(jwt =>
+            {
+                var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);
+                jwt.SaveToken = true;
+                jwt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    RequireExpirationTime = false,
+                    ValidateLifetime = true
+                };
+            });
+            services.AddDefaultIdentity<IdentityUser>(opt =>
+            opt.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+
+
             services.AddScoped<IRentalManagementRepository, RentalManagementRepository>();
 
             services.AddScoped<IUserManagementRepository, UserManagementRepository>();
@@ -57,6 +87,8 @@ namespace MUIManagement.WebApp
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MUIManagement.WebApp v1"));
             }
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
