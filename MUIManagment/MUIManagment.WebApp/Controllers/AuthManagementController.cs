@@ -58,7 +58,7 @@ namespace MUIManagement.WebApp.Controllers
                 {
                     var jwtToken = GenerateJwtToken(newUser);
 
-                    return new JsonResult(new RegistrationResponse()
+                    return Ok(new RegistrationResponse()
                     {
                         Success = true,
                         Token = jwtToken
@@ -72,7 +72,7 @@ namespace MUIManagement.WebApp.Controllers
                 } ) { StatusCode = 500 };
             }
 
-            return new JsonResult(new RegistrationResponse()
+            return BadRequest(new RegistrationResponse()
             {
                 Success = false,
                 Errors = new List<string> {
@@ -101,6 +101,60 @@ namespace MUIManagement.WebApp.Controllers
             var token = jwtTokenHandler.CreateToken(tokenDescriptor);
             var jwtToken = jwtTokenHandler.WriteToken(token);
             return jwtToken;
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginRequest user)
+        {
+            if(ModelState.IsValid)
+            {
+                var existingUser = await _userManager.FindByEmailAsync(user.Email);
+
+                if(existingUser == null)
+                {
+                    return BadRequest(new RegistrationResponse()
+                    {
+                        Success = false,
+                        Errors = new List<string>()
+                        {
+                            "Invalid AuthenticationRequest"
+                        }
+                    });
+                }
+
+                var isCorrect = await _userManager.CheckPasswordAsync(existingUser, user.Password);
+
+                if(isCorrect)
+                {
+                    var jwtToken = GenerateJwtToken(existingUser);
+
+                    return Ok(new RegistrationResponse()
+                    {
+                        Success = true,
+                        Token = jwtToken
+                    });
+                }
+                else
+                {
+                    return BadRequest(new RegistrationResponse()
+                    {
+                        Success = false,
+                        Errors = new List<string>
+                        {
+                            "Invalid AuthenticationRequest"
+                        }
+                    });
+                }
+            }
+
+            return BadRequest(new RegistrationResponse() { 
+                Success = false, 
+                Errors = new List<string>()
+                {
+                    "Invalid Payload"
+                } 
+            });
         }
     }
 }
