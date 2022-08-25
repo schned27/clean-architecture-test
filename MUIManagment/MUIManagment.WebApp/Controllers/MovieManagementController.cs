@@ -9,12 +9,14 @@ using MUIManagement.Application.UseCases.MovieManagement.Commands.CreateMovie;
 using MUIManagement.Application.UseCases.MovieManagement.Commands.DeleteMovieById;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetAllMovies;
 using MUIManagement.Application.UseCases.MovieManagement.Queries.GetMovieById;
-
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class MovieManagementController : ControllerBase
     {
         private readonly IMediator _mediator;
