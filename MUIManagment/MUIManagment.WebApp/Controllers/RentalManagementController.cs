@@ -10,11 +10,14 @@ using MUIManagement.Application.UseCases.RentalManagement.Commands.EditRental;
 using MUIManagement.Application.UseCases.RentalManagement.Queries.GetRentalById;
 using MUIManagement.Application.UseCases.RentalManagement.Queries.GetAllRentals;
 using MUIManagement.WebApp.Middleware;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RentalManagementController : ControllerBase
     {
         private readonly IMediator _mediator;

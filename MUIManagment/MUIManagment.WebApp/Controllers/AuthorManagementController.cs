@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MUIManagement.Application.Domain.Models;
 using MUIManagement.Application.UseCases.AuthorManagement.Commands.CreateAuthor;
@@ -13,6 +15,7 @@ namespace MUIManagement.WebApp.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthorManagementController : ControllerBase
     {
         private readonly IMediator _mediator;
