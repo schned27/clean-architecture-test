@@ -40,15 +40,6 @@ namespace MUIManagement.WebApp.Controllers
                 {
 
                     throw new AppException($"E-Mail address already exists");
-
-                    //return BadRequestResult(new RegistrationResponse()
-                    //{
-                    //    Success = false,
-                    //    Errors = new List<string>()
-                    //    {
-                    //        "E-Mail-Adresse existiert bereits."
-                    //    }
-                    //});
                 }
 
                 var newUser = new IdentityUser() { Email = user.Email, UserName = user.Username };
